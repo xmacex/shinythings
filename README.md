@@ -1,6 +1,6 @@
 # shinythings
 
-Accumulate shiny things! Duel integrator for crow
+Accumulate shiny things! Dual integrator for crow
 
 ## Documentation
 
