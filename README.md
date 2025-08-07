@@ -13,6 +13,8 @@ Accumulate shiny things! Duel integrator for crow
 
 Accumulate all the shiny things! A pair of integrators, meaning two accumulators are collecting from inputs 1 and 2, capped by hardware limits at -5 an 10 volts.
 
-Non-linear response is hopefully useful/interesting at slow rates near 0 as well as higher voltages. No shortage of glitchy aliasing effect etc.
+Non-linear response is hopefully useful/interesting at slow rates near 0 as well as higher voltages. There are two exponential factors `bend1` and `bend2` you can tune in the public variables to retune the response via druid, bowering or livecoding from maiden. Low values make more room around 0V, high values overrespond towards squares for higher rates.
+
+No shortage of glitchy aliasing effect etc.
 
 caw!

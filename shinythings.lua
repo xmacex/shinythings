@@ -9,34 +9,34 @@
 --
 -- by xmacex
 
-MINV = -5
-MAXV = 10
+local MINV = -5
+local MAXV = 10
 
-TRUEV  = 5
-FALSEV = 0
+local TRUEV  = 5
+local FALSEV = 0
 
-T      = 555
-BEND   = 6
+local FREQ   = 333
 
 local integrals = {0, 0}
-local rising = {false, false}
-local dt = 1/T
+local rising    = {false, false}
+local dt        = 1/FREQ
 
-public{timemult=T}:range(0.1, T)
+public{bend1 = 7}:range(0.1, 12)
+public{bend2 = 7}:range(0.1, 12)
 
 function init()
-   output[1].slew = 1/T
+   output[1].slew = 1/FREQ
    input[1].mode("stream", dt)
    input[1].stream = process1
 
-   output[3].slew = 1/T
+   output[3].slew = 1/FREQ
    input[2].mode("stream", dt)
    input[2].stream = process2
 end
 
 function process1(v)
    -- dv = integrate(v, dt)*public.timemult
-   dv = integrate(v, dt)*math.exp(BEND)
+   local dv = integrate(v, dt)*math.exp(public.bend1)
    integrals[1] = clamp(integrals[1]+dv, MINV, MAXV)
    rising[1] = dv > 0
 
@@ -46,7 +46,7 @@ end
 
 function process2(v)
    -- dv = integrate(v, dt)*public.timemult
-   dv = integrate(v, dt)*math.exp(BEND)
+   local dv = integrate(v, dt)*math.exp(public.bend2)
    integrals[2] = clamp(integrals[2]+dv, MINV, MAXV)
    rising[2] = dv > 0
 
@@ -61,3 +61,8 @@ end
 function clamp(v, min, max)
    return math.max(min, math.min(v, max))
 end
+
+
+-- Local Variables:
+-- flycheck-luacheck-standards: ("crow")
+-- End:
