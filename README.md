@@ -2,6 +2,8 @@
 
 Accumulate shiny things! Dual integrator for crow
 
+![](shinythings.gif)
+
 ## Documentation
 
     → 1 signal 1
