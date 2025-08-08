@@ -21,8 +21,8 @@ local integrals = {0, 0}
 local rising    = {false, false}
 local dt        = 1/FREQ
 
-public{bend1 = 7}:range(0.1, 12)
-public{bend2 = 7}:range(0.1, 12)
+public{bend1 = 7}:range(0, 12)
+public{bend2 = 7}:range(0, 12)
 
 function init()
    output[1].slew = 1/FREQ
